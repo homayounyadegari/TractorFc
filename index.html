@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tractor FC - Resmi Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+    }
+
+    .logo-mini {
+      width: 45px;
+      height: 45px;
+      background-image: url('tractor-fc.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.8));
+      transition: all 0.3s ease;
+    }
+
+    .logo-mini:hover {
+      transform: scale(1.1) rotate(10deg);
+      filter: drop-shadow(0 0 15px rgba(220, 38, 38, 1));
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #dc2626;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .hero {
+      /* margin-top: 250px; */
+      height: 100vh;
+      /* display: flex; */
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .nav-link:hover:before {
+            left: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        } */
+
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Main Content Container */
+    .main-content {
+      margin-top: 10px;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Page Sections */
+    .page-section {
+      display: none;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Ana Sayfa - 3D Logo Section */
+    .home-section {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      margin-top: 50px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /*.logo-showcase {
+            perspective: 1500px;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 3rem;
+        }
+        
+        .logo-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: logoRotate 20s infinite linear;
+            cursor: pointer;
+        }
+        
+        .logo-3d:hover {
+            animation-play-state: paused;
+            transform: scale(1.05);
+        }
+        
+        .logo-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('tractor-fc.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .logo-layer-1 {
+            transform: translateZ(40px);
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 1)) brightness(1.1);
+        }
+        
+        .logo-layer-2 {
+            transform: translateZ(30px);
+            opacity: 0.9;
+            filter: drop-shadow(0 0 15px rgba(185, 28, 28, 0.8)) brightness(1.05);
+        }
+        
+        .logo-layer-3 {
+            transform: translateZ(20px);
+            opacity: 0.8;
+            filter: drop-shadow(0 0 12px rgba(153, 27, 27, 0.6));
+        }
+        
+        .logo-layer-shadow {
+            transform: translateZ(-10px);
+            opacity: 0.4;
+            filter: brightness(0.3) blur(3px);
+        }
+        
+        @keyframes logoRotate {
+            0% { transform: rotateY(0deg) rotateX(15deg); }
+            100% { transform: rotateY(360deg) rotateX(15deg); }
+        }
+        
+        .home-title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 30px rgba(220, 38, 38, 0.6); }
+            to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 50px rgba(220, 38, 38, 0.8); }
+        }*/
+    .home-title {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #dc2626;
+      margin-bottom: 1rem;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    .floating-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: #dc2626;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .logo-showcase {
+      perspective: 1500px;
+      width: 500px;
+      height: 500px;
+      margin: 0 auto 3rem;
+      position: relative;
+    }
+
+    .logo-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: logoRotate 20s infinite linear;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .logo-3d:hover {
+      animation-play-state: paused;
+      transform: scale(1.1);
+    }
+
+    /* Her katman için ayrı özellikler */
+    .logo-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('tractor-fc.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Katman 1 - En önde (Ana logo) */
+    .logo-layer-1 {
+      transform: translateZ(40px);
+      opacity: 1;
+      filter:
+        drop-shadow(0 0 20px rgba(220, 38, 38, 1)) drop-shadow(0 0 40px rgba(220, 38, 38, 0.8)) brightness(1.1) contrast(1.1);
+      z-index: 5;
+    }
+
+    /* Katman 2 - İkinci seviye */
+    .logo-layer-2 {
+      transform: translateZ(30px);
+      opacity: 0.9;
+      filter:
+        drop-shadow(0 0 15px rgba(185, 28, 28, 0.8)) brightness(1.05) contrast(1.05) hue-rotate(5deg);
+      z-index: 4;
+    }
+
+    /* Katman 3 - Üçüncü seviye */
+    .logo-layer-3 {
+      transform: translateZ(20px);
+      opacity: 0.8;
+      filter:
+        drop-shadow(0 0 12px rgba(153, 27, 27, 0.6)) brightness(1) contrast(1) hue-rotate(10deg);
+      z-index: 3;
+    }
+
+    /* Katman 4 - Dördüncü seviye */
+    .logo-layer-4 {
+      transform: translateZ(10px);
+      opacity: 0.7;
+      filter:
+        drop-shadow(0 0 8px rgba(127, 29, 29, 0.4)) brightness(0.95) contrast(0.95) hue-rotate(15deg);
+      z-index: 2;
+    }
+
+    /* Katman 5 - Gölge katmanı */
+    .logo-layer-shadow {
+      transform: translateZ(7px);
+      opacity: 0.5;
+      filter:
+        brightness(0.3) blur(3px) drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+      z-index: 1;
+    }
+
+    /* Ana döndürme animasyonu */
+    @keyframes logoRotate {
+      0% {
+        transform: rotateY(0deg) rotateX(15deg) rotateZ(0deg);
+      }
+
+      25% {
+        transform: rotateY(90deg) rotateX(20deg) rotateZ(5deg);
+      }
+
+      50% {
+        transform: rotateY(180deg) rotateX(15deg) rotateZ(0deg);
+      }
+
+      75% {
+        transform: rotateY(270deg) rotateX(10deg) rotateZ(-5deg);
+      }
+
+      100% {
+        transform: rotateY(360deg) rotateX(15deg) rotateZ(0deg);
+      }
+    }
+
+    .home-subtitle {
+      font-size: 1.8rem;
+      color: #d1d5db;
+      margin-bottom: 3rem;
+    }
+
+    /* Player card width'ini de düzeltin */
+    .player-card {
+      background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8));
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 0;
+      text-align: center;
+      border: 2px solid rgba(220, 38, 38, 0.4);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      height: 480px;
+      width: 300px;
+      /* Bu satırı değiştirin - önceden 280px */
+      cursor: pointer;
+    }
+
+    .player-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+          rgba(220, 38, 38, 0.1) 0%,
+          transparent 25%,
+          transparent 75%,
+          rgba(185, 28, 28, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .player-card:hover:before {
+      opacity: 1;
+    }
+
+    .player-card:hover {
+      transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.03);
+      box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 10px 30px rgba(220, 38, 38, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+      border-color: rgba(220, 38, 38, 0.8);
+    }
+
+    /* Player Card Header */
+    .player-card-header {
+      background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+      height: 120px;
+      position: relative;
+      border-radius: 23px 23px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .player-card-header:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .player-number-large {
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.15);
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      z-index: 1;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .player-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      border: 4px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Fallback for no image */
+    .player-image.no-photo {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+      background-size: auto;
+    }
+
+    .player-image.no-photo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(185, 28, 28, 0.1));
+      border-radius: 50%;
+    }
+
+    .player-card:hover .player-image {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Player Card Body */
+    .player-card-body {
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 2;
+      height: calc(100% - 120px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .player-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+    }
+
+    .player-position {
+      color: #dc2626;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .player-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem;
+      border-radius: 12px;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      background: rgba(220, 38, 38, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #dc2626;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      margin-top: 0.2rem;
+    }
+
+    .player-number {
+      background: linear-gradient(45deg, #dc2626, #b91c1c);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+      font-size: 1.1rem;
+      box-shadow:
+        0 4px 15px rgba(220, 38, 38, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .player-card:hover .player-number {
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 25px rgba(220, 38, 38, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Player Card Shine Effect */
+    .player-card:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent);
+      transition: left 0.6s ease;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .player-card:hover:after {
+      left: 100%;
+    }
+
+    /* Position-specific colors */
+    .goalkeeper .player-card-header {
+      background: linear-gradient(135deg, #059669, #047857, #065f46);
+    }
+
+    .goalkeeper .player-position {
+      color: #10b981;
+    }
+
+    .defender .player-card-header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+    }
+
+    .defender .player-position {
+      color: #3b82f6;
+    }
+
+    .midfielder .player-card-header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+    }
+
+    .midfielder .player-position {
+      color: #8b5cf6;
+    }
+
+    .forward .player-card-header {
+      background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+    }
+
+    .forward .player-position {
+      color: #ef4444;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .info-text {
+      text-align: center;
+      color: #9ca3af;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
+
+
+
+
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      background: rgba(220, 38, 38, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #dc2626;
+      display: block;
+    }
+
+    .stat-label {
+      color: #d1d5db;
+      margin-top: 0.5rem;
+    }
+
+    /*Takım Sayfası*/
+    .team-section {
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      text-align: center;
+      color: #dc2626;
+      margin-bottom: 3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .team-categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: linear-gradient(45deg, #dc2626, #b91c1c);
+      transform: translateY(-2px);
+    }
+
+    /* .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .player-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .player-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .player-card:hover:before {
+            left: 100%;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .player-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+        .player-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; /* isteğe bağlı köşe yumuşatma 
+}
+        .player-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+        
+        .player-position {
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+        
+        .player-number {
+            background: #dc2626;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: bold;
+            display: inline-block;
+        } */
+
+    /* Stadyum Sayfası */
+    .stadium-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .stadium-3d-container {
+      perspective: 1200px;
+      width: 600px;
+      height: 400px;
+      margin: 3rem auto;
+      max-width: 90%;
+    }
+
+    .stadium-complex {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: stadiumRotate 25s infinite linear;
+    }
+
+    .stadium-info {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    @keyframes stadiumRotate {
+      0% {
+        transform: rotateY(0deg) rotateX(15deg);
+      }
+
+      100% {
+        transform: rotateY(360deg) rotateX(15deg);
+      }
+    }
+
+    /* Maçlar Sayfası */
+    .matches-section {
+      padding: 4rem 2rem;
+    }
+
+    .matches-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .match-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .match-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .match-teams {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .match-score {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #dc2626;
+    }
+
+    /* Haberler Sayfası */
+    .news-section {
+      padding: 4rem 2rem;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-image {
+      height: 200px;
+      background: linear-gradient(45deg, #dc2626, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .news-content {
+      padding: 1.5rem;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #dc2626;
+      margin-bottom: 1rem;
+    }
+
+    .news-excerpt {
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+
+    .news-date {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* İletişim Sayfası */
+    .contact-section {
+      padding: 4rem 2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info,
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #dc2626, #b91c1c);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      background: #111;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .social-link {
+      color: #dc2626;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px) scale(1.2);
+      filter: drop-shadow(0 5px 15px rgba(220, 38, 38, 0.5));
+    }
+
+    .control-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .control-buttonunderlogo {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 8px 25px rgba(220, 38, 38, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .control-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+    }
+
+    /* Logo particle için ek stiller */
+    .logo-particle {
+      filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.6));
+      transition: all 0.3s ease;
+    }
+
+    .logo-particle:hover {
+      transform: scale(1.2) !important;
+      filter: drop-shadow(0 0 15px rgba(220, 38, 38, 1));
+    }
+
+    /* Logo Speed Classes */
+    .rotation-slow {
+      animation-duration: 35s !important;
+    }
+
+    .rotation-normal {
+      animation-duration: 20s !important;
+    }
+
+    .rotation-fast {
+      animation-duration: 8s !important;
+    }
+
+    .rotation-reverse {
+      animation-direction: reverse !important;
+    }
+
+    /* Float animasyonunu güncelle */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+      }
+
+      25% {
+        transform: translateY(-80px) rotate(90deg);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-150px) rotate(180deg);
+        opacity: 0.2;
+      }
+
+      75% {
+        transform: translateY(-80px) rotate(270deg);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 30px rgba(220, 38, 38, 0.6);
+      }
+
+      to {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 50px rgba(220, 38, 38, 0.8);
+      }
+    }
+.players-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        justify-items: center;
+        width: 100%;
+      }
+
+      /* Position colors düzeltmesi */
+      .player-card[data-position="goalkeeper"] .player-card-header {
+        background: linear-gradient(135deg, #059669, #047857, #065f46);
+      }
+
+      .player-card[data-position="goalkeeper"] .player-position {
+        color: #10b981;
+      }
+
+      .player-card[data-position="defender"] .player-card-header {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+      }
+
+      .player-card[data-position="defender"] .player-position {
+        color: #3b82f6;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .players-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 1.5rem !important;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .home-title {
+        font-size: 2.5rem;
+      }
+
+      .logo-showcase {
+        width: 300px;
+        height: 300px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      /* .players-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      } */
+      
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo-nav" onclick="showPage('home')">
+        <div class="logo-mini"></div>
+        <div class="logo-text">TRACTOR FC</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" onclick="showPage('home')">Ana Sayfa</a></li>
+        <li><a href="#team" onclick="showPage('team')">Takım</a></li>
+        <li><a href="#matches" onclick="showPage('matches')">Maçlar</a></li>
+        <li><a href="#stadium" onclick="showPage('stadium')">Stadium</a></li>
+        <li><a href="#news" onclick="showPage('news')">Haberler</a></li>
+        <li><a href="#contact" onclick="showPage('contact')">İletişim</a></li>
+      </ul>
+      <!-- <nav class="nav-menu" id="navMenu">
+                <div class="nav-item">
+                    <a href="#" class="nav-link active" onclick="showPage('home')">Ana Sayfa</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('team')">Takım</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('stadium')">Stadyum</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('matches')">Maçlar</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('news')">Haberler</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('contact')">İletişim</a>
+                </div>
+            </nav> -->
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Ana Sayfa -->
+    <section class="page-section active" id="home">
+      <section class="hero" id="home2">
+        <div class="home-section">
+          <div class="floating-particles" id="particles"></div>
+          <div>
+            <div class="logo-showcase">
+              <div class="logo-3d" id="logo3D">
+                <div class="logo-layer logo-layer-shadow"></div>
+                <div class="logo-layer logo-layer-4"></div>
+                <div class="logo-layer logo-layer-3"></div>
+                <div class="logo-layer logo-layer-2"></div>
+                <div class="logo-layer logo-layer-1"></div>
+              </div>
+            </div>
+
+            <h1 class="home-title">TRACTOR FC</h1>
+            <!-- <p class="home-subtitle">یاشاسین تراختور</p> -->
+            <div class="control-buttons">
+              <button class="control-buttonunderlogo" onclick="changeSpeed('slow')">
+                🐌 Yavaş
+              </button>
+              <button class="control-buttonunderlogo" onclick="changeSpeed('fast')">
+                🚀 Hızlı
+              </button>
+              <button class="control-buttonunderlogo" onclick="reverseRotation()">
+                ↩️ Ters Çevir
+              </button>
+              <button class="control-buttonunderlogo" onclick="explodeAnimation()">
+                💥 Patlama
+              </button>
+              <button class="control-buttonunderlogo" onclick="resetLogo()">
+                🏠 Sıfırla
+              </button>
+              <button class="control-buttonunderlogo" onclick="randomSpin()">
+                🎲 Rastgele
+              </button>
+            </div>
+          </div>
+      </section>
+      <div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">1970</span>
+            <span class="stat-label">Kuruluş Yılı</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Şampiyonluk</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">66,833</span>
+            <span class="stat-label">Stadyum Kapasitesi</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">1M+</span>
+            <span class="stat-label">Taraftar</span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </section>
+
+    <!-- Takım Sayfası -->
+    <section class="page-section" id="team">
+      <div class="team-section">
+        <h2 class="section-title">Takım Kadrosu</h2>
+
+        <div class="team-categories">
+          <button class="category-btn active" onclick="filterPlayers('all')">Tüm Kadro</button>
+          <button class="category-btn" onclick="filterPlayers('goalkeeper')">Kaleciler</button>
+          <button class="category-btn" onclick="filterPlayers('defender')">Defans</button>
+          <button class="category-btn" onclick="filterPlayers('midfielder')">Orta Saha</button>
+          <button class="category-btn" onclick="filterPlayers('forward')">Forvet</button>
+        </div>
+
+        <div class="players-grid" id="playersGrid">
+          <!-- Kaleciler -->
+          <div class="player-card" data-position="goalkeeper">
+            <div class="player-card-header">
+              <div class="player-number-large">1</div>
+              <div class="player-image" style="background-image: url('photos/alireza_beiranvand.png');">
+                <span style="position: absolute; opacity: 0;">1</span>
+              </div>
+            </div>
+            <div class="player-card-body">
+              <div class="player-name">Alireza Beiranvand</div>
+              <div class="player-position">Kaleci</div>
+              <div class="player-stats">
+                <div class="stat-item">
+                  <span class="stat-value">193cm</span>
+                  <span class="stat-label">Boy</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">32</span>
+                  <span class="stat-label">Yaş</span>
+                </div>
+              </div>
+              <div class="player-number">1</div>
+            </div>
+          </div>
+
+          <div class="player-card" data-position="goalkeeper">
+            <div class="player-card-header">
+              <div class="player-number-large">30</div>
+              <div class="player-image" style="background-image: url('photos/moha_mazaheri.jpg');">
+                <span style="position: absolute; opacity: 0;">30</span>
+              </div>
+            </div>
+            <div class="player-card-body">
+              <div class="player-name">Mohammad Rashid Mazaheri</div>
+              <div class="player-position">Kaleci</div>
+              <div class="player-stats">
+                <div class="stat-item">
+                  <span class="stat-value">188cm</span>
+                  <span class="stat-label">Boy</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">29</span>
+                  <span class="stat-label">Yaş</span>
+                </div>
+              </div>
+              <div class="player-number">30</div>
+            </div>
+          </div>
+
+          <!-- Defans -->
+          <div class="player-card" data-position="defender">
+            <div class="player-card-header">
+              <div class="player-number-large">2</div>
+              <div class="player-image" style="background-image: url('photos/Danial Esmaeilifar.png');">
+                <span style="position: absolute; opacity: 0;">2</span>
+              </div>
+            </div>
+            <div class="player-card-body">
+              <div class="player-name">Danial Esmaeilifar</div>
+              <div class="player-position">Sağ Bek</div>
+              <div class="player-stats">
+                <div class="stat-item">
+                  <span class="stat-value">180cm</span>
+                  <span class="stat-label">Boy</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">26</span>
+                  <span class="stat-label">Yaş</span>
+                </div>
+              </div>
+              <div class="player-number">2</div>
+            </div>
+          </div>
+
+          <!-- Diğer oyuncuları da aynı yapıda ekleyebilirsiniz -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stadyum Sayfası -->
+    <section class="page-section" id="stadium">
+      <div class="stadium-section">
+        <h2 class="section-title">Yadegar-e Imam Stadium</h2>
+
+        <div class="stadium-3d-container">
+          <div class="stadium-complex">
+            <!-- Stadyum 3D modeli buraya gelecek -->
+            <div
+              style="width: 100%; height: 100%; background: linear-gradient(45deg, #dc2626, #b91c1c); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+              🏟️</div>
+          </div>
+        </div>
+
+        <div class="stadium-info">
+          <h3 style="color: #dc2626; margin-bottom: 1rem;">Stadyum Bilgileri</h3>
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
+            <div><strong>Kapasite:</strong> 66,833 kişi</div>
+            <div><strong>Açılış:</strong> 1996</div>
+            <div><strong>Konum:</strong> Tebriz, İran</div>
+            <div><strong>Saha Boyutu:</strong> 105x68 metre</div>
+            <div><strong>Çim Türü:</strong> Doğal çim</div>
+            <div><strong>Aydınlatma:</strong> LED projektörler</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maçlar Sayfası -->
+    <section class="page-section" id="matches">
+      <div class="matches-section">
+        <h2 class="section-title">Maçlar ve Sonuçlar</h2>
+
+        <div class="matches-tabs">
+          <button class="category-btn active" onclick="filterMatches('all')">Tümü</button>
+          <button class="category-btn" onclick="filterMatches('home')">Ev Sahibi</button>
+          <button class="category-btn" onclick="filterMatches('away')">Deplasman</button>
+          <button class="category-btn" onclick="filterMatches('league')">Lig</button>
+          <button class="category-btn" onclick="filterMatches('cup')">Kupa</button>
+        </div>
+
+        <div id="matchesContainer">
+          <!-- Son Maçlar -->
+          <div class="match-card" data-type="league home">
+            <div class="match-teams">
+              <div class="team-name">Tractor FC</div>
+              <div class="match-score">2 - 1</div>
+              <div class="team-name">Persepolis</div>
+            </div>
+            <div style="text-align: center; color: #9ca3af;">
+              <div>İran Pro League - 15. Hafta</div>
+              <div>25 Mayıs 2025 - Yadegar-e Imam Stadium</div>
+            </div>
+          </div>
+
+          <div class="match-card" data-type="league away">
+            <div class="match-teams">
+              <div class="team-name">Esteghlal</div>
+              <div class="match-score">0 - 3</div>
+              <div class="team-name">Tractor FC</div>
+            </div>
+            <div style="text-align: center; color: #9ca3af;">
+              <div>İran Pro League - 14. Hafta</div>
+              <div>18 Mayıs 2025 - Azadi Stadium</div>
+            </div>
+          </div>
+
+          <div class="match-card" data-type="cup home">
+            <div class="match-teams">
+              <div class="team-name">Tractor FC</div>
+              <div class="match-score">4 - 0</div>
+              <div class="team-name">Sepahan</div>
+            </div>
+            <div style="text-align: center; color: #9ca3af;">
+              <div>Hazfi Cup - Çeyrek Final</div>
+              <div>10 Mayıs 2025 - Yadegar-e Imam Stadium</div>
+            </div>
+          </div>
+
+          <!-- Gelecek Maçlar -->
+          <div class="match-card" data-type="league home" style="border-left: 4px solid #fbbf24;">
+            <div class="match-teams">
+              <div class="team-name">Tractor FC</div>
+              <div class="match-score" style="color: #fbbf24;">vs</div>
+              <div class="team-name">Zob Ahan</div>
+            </div>
+            <div style="text-align: center; color: #9ca3af;">
+              <div>İran Pro League - 16. Hafta</div>
+              <div>1 Haziran 2025 - Yadegar-e Imam Stadium</div>
+              <div style="color: #fbbf24; margin-top: 0.5rem;">⏰ Gelecek Maç</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Haberler Sayfası -->
+    <section class="page-section" id="news">
+      <div class="news-section">
+        <h2 class="section-title">Haberler</h2>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-image">📰</div>
+            <div class="news-content">
+              <h3 class="news-title">Yeni Transfer: Ricardo Alves Tractor FC'de</h3>
+              <p class="news-excerpt">Brezilyalı orta saha oyuncusu Ricardo Alves, resmi olarak Tractor FC forması
+                giyecek. 28 yaşındaki oyuncu 2 yıllık sözleşme imzaladı.</p>
+              <div class="news-date">5 Haziran 2025</div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-image">🏆</div>
+            <div class="news-content">
+              <h3 class="news-title">Persepolis Galibiyeti ile Lig Liderliği</h3>
+              <p class="news-excerpt">Yadegar-e Imam'da oynanan kritik maçta Persepolis'i 2-1 yenen Tractor FC, Iran Pro
+                League'de liderlik koltuğuna oturdu.</p>
+              <div class="news-date">25 Mayıs 2025</div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-image">🎯</div>
+            <div class="news-content">
+              <h3 class="news-title">Mehdi Torabi'den Muhteşem Gol</h3>
+              <p class="news-excerpt">Milli futbolcu Mehdi Torabi'nin Esteghlal ağlarına attığı rövaşata golü sosyal
+                medyada viral oldu ve gol adayları arasında yer aldı.</p>
+              <div class="news-date">18 Mayıs 2025</div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-image">🏟️</div>
+            <div class="news-content">
+              <h3 class="news-title">Stadyum Renovasyon Projesi</h3>
+              <p class="news-excerpt">Yadegar-e Imam Stadium'un modern teknolojilerle donatılması için başlatılan
+                renovasyon projesi bu yaz tamamlanacak.</p>
+              <div class="news-date">10 Mayıs 2025</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim Sayfası -->
+    <section class="page-section" id="contact">
+      <div class="contact-section">
+        <h2 class="section-title">İletişim</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 style="color: #dc2626; margin-bottom: 2rem;">İletişim Bilgileri</h3>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">📍 Adres</h4>
+              <p>Yadegar-e Imam Stadium<br>Tebriz, East Azerbaijan<br>İran</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">📞 Telefon</h4>
+              <p>+98 41 3333 4444</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">✉️ E-posta</h4>
+              <p>info@tractorfc.ir</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">🌐 Website</h4>
+              <p>www.tractorfc.ir</p>
+            </div>
+
+            <div class="social-links">
+              <a href="#" class="social-link">📘</a>
+              <a href="#" class="social-link">📷</a>
+              <a href="#" class="social-link">🐦</a>
+              <a href="#" class="social-link">📺</a>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <h3 style="color: #dc2626; margin-bottom: 2rem;">Bize Yazın</h3>
+            <form onsubmit="handleContactForm(event)">
+              <input type="text" placeholder="Adınız" required>
+              <input type="email" placeholder="E-posta Adresiniz" required>
+              <input type="text" placeholder="Konu">
+              <textarea rows="5" placeholder="Mesajınız" required></textarea>
+              <button type="submit" class="submit-btn">Gönder</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+        <div>
+          <h4 style="color: #dc2626; margin-bottom: 1rem;">Hızlı Linkler</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="#" onclick="showPage('team')" style="color: #d1d5db; text-decoration: none;">Takım</a>
+            <a href="#" onclick="showPage('matches')" style="color: #d1d5db; text-decoration: none;">Maçlar</a>
+            <a href="#" onclick="showPage('news')" style="color: #d1d5db; text-decoration: none;">Haberler</a>
+            <a href="#" onclick="showPage('contact')" style="color: #d1d5db; text-decoration: none;">İletişim</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: #dc2626; margin-bottom: 1rem;">Kulüp</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <span style="color: #d1d5db;">Kuruluş: 1970</span>
+            <span style="color: #d1d5db;">Şehir: Tebriz</span>
+            <span style="color: #d1d5db;">Stadyum: Yadegar-e Imam</span>
+            <span style="color: #d1d5db;">Kapasite: 66,833</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: #dc2626; margin-bottom: 1rem;">Sosyal Medya</h4>
+          <div class="social-links" style="justify-content: flex-start;">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">🐦</a>
+            <a href="#" class="social-link">📺</a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border: 1px solid #333; margin: 2rem 0;">
+      <p style="color: #9ca3af;">&copy; 2025 Tractor FC. Tüm hakları saklıdır. | Tebriz'in Gururu</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sayfa navigation sistemi
+    function showPage(pageId) {
+      // Tüm sayfaları gizle
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Seçilen sayfayı göster
+      document.getElementById(pageId).classList.add('active');
+
+      // Navigation linklerini güncelle
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Mobile menu'yu kapat
+      document.getElementById('navMenu').classList.remove('active');
+
+      // Sayfanın en üstüne scroll
+      window.scrollTo(0, 0);
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    // Takım oyuncuları filtreleme
+    function filterPlayers(position) {
+      const players = document.querySelectorAll('.player-card');
+      const buttons = document.querySelectorAll('.team-categories .category-btn');
+
+      // Buton aktif durumunu güncelle
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Oyuncuları filtrele
+      players.forEach(player => {
+        if (position === 'all' || player.dataset.position === position) {
+          player.style.display = 'block';
+          player.style.animation = 'fadeInUp 0.5s ease';
+        } else {
+          player.style.display = 'none';
+        }
+      });
+    }
+
+    // Maçları filtreleme
+    function filterMatches(type) {
+      const matches = document.querySelectorAll('.match-card');
+      const buttons = document.querySelectorAll('.matches-tabs .category-btn');
+
+      // Buton aktif durumunu güncelle
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Maçları filtrele
+      matches.forEach(match => {
+        const matchTypes = match.dataset.type.split(' ');
+        if (type === 'all' || matchTypes.includes(type)) {
+          match.style.display = 'block';
+          match.style.animation = 'fadeInUp 0.5s ease';
+        } else {
+          match.style.display = 'none';
+        }
+      });
+    }
+
+    // İletişim formu
+    function handleContactForm(event) {
+      event.preventDefault();
+      alert('Mesajınız alındı! Teşekkür ederiz.');
+      event.target.reset();
+    }
+
+    // 3D Logo kontrolleri
+    let logoRotating = true;
+    const logo3D = document.getElementById('logo3D');
+
+    // Logo mouse interaksiyonu
+    let isDragging = false;
+    let lastX = 0;
+    let lastY = 0;
+    let rotationX = 15;
+    let rotationY = 0;
+
+    if (logo3D) {
+      logo3D.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        logo3D.style.animationPlayState = 'paused';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - lastX;
+        const deltaY = e.clientY - lastY;
+
+        rotationY += deltaX * 0.8;
+        rotationX -= deltaY * 0.8;
+
+        rotationX = Math.max(-90, Math.min(90, rotationX));
+
+        logo3D.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+        lastX = e.clientX;
+        lastY = e.clientY;
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          if (logoRotating) {
+            setTimeout(() => {
+              logo3D.style.animation = 'logoRotate 20s infinite linear';
+            }, 500);
+          }
+        }
+      });
+    }
+
+    // SVG fallback kontrolü
+    function checkSVGAndSetFallback() {
+      const testImg = new Image();
+      testImg.onload = function () {
+        console.log('✅ SVG başarıyla yüklendi!');
+      };
+      testImg.onerror = function () {
+        console.log('❌ SVG bulunamadı, fallback aktif');
+        // SVG yoksa logo yerine T harfi göster
+        document.querySelectorAll('.logo-layer').forEach(layer => {
+          layer.style.backgroundImage = 'none';
+          layer.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:bold;color:#dc2626;text-shadow:4px 4px 8px rgba(0,0,0,0.8);">T</div>';
+        });
+
+        // Header logo için de aynısını yap
+        document.querySelector('.logo-mini').style.backgroundImage = 'none';
+        document.querySelector('.logo-mini').innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:bold;color:#dc2626;">T</div>';
+      };
+      testImg.src = 'tractor-fc.svg';
+    }
+    // Floating particles oluştur
+    // function createParticles() {
+    //     const container = document.getElementById('particles');
+    //     if (!container) return;
+
+    //     const particleCount = 145;
+
+    //     for (let i = 0; i < particleCount; i++) {
+    //         const particle = document.createElement('div');
+    //         particle.className = 'particle';
+    //         particle.style.left = Math.random() * 100 + '%';
+    //         particle.style.top = Math.random() * 100 + '%';
+    //         particle.style.animationDelay = Math.random() * 2 + 's';
+    //         particle.style.width = Math.random() * 3 + 2 + 'px';
+    //         particle.style.height = particle.style.width;
+    //         container.appendChild(particle);
+    //     }
+    // }
+    // Floating logo particles oluştur
+    function createParticles() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+
+      const particleCount = 45; // Logo parçacık sayısı
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle logo-particle';
+
+        // Logo background'u ekle
+        particle.style.backgroundImage = 'url("tractor-fc.svg")';
+        particle.style.backgroundSize = 'contain';
+        particle.style.backgroundRepeat = 'no-repeat';
+        particle.style.backgroundPosition = 'center';
+
+        // Position ve timing
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 2 + 's';
+
+        // Rastgele boyutlar
+        const size = Math.random() * 3 + 9; // 15-45px arası
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+
+        // Rastgele opacity
+        particle.style.opacity = Math.random() * 0.4 + 0.2; // 0.2-0.6 arası
+
+        // Rastgele rotation
+        particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        container.appendChild(particle);
+      }
+    }
+
+    // Logo'yu tamamen sıfırla
+    function resetLogo() {
+      // Tüm class'ları temizle
+      logo3D.className = 'logo-3d';
+
+      // Değişkenleri sıfırla
+      isReversed = false;
+      currentSpeedMode = 'normal';
+      currentSpeed = 20;
+      rotationX = 15;
+      rotationY = 0;
+
+      // Speed slider'ı sıfırla
+      if (speedSlider) {
+        speedSlider.value = 20;
+        speedValue.textContent = 'Normal';
+      }
+
+      // Transform'u sıfırla
+      logo3D.style.transition = 'transform 1s ease';
+      logo3D.style.transform = 'rotateX(15deg) rotateY(0deg)';
+
+      // Animasyonu başlat
+      setTimeout(() => {
+        logo3D.style.transition = '';
+        logo3D.style.animation = `logoRotate ${currentSpeed}s infinite linear`;
+      }, 1000);
+
+      // Tüm katmanları sıfırla
+      document.querySelectorAll('.logo-layer').forEach(layer => {
+        layer.style.transition = '';
+        layer.style.transform = '';
+        layer.style.opacity = '';
+      });
+    }
+    // Logo Kontrol Değişkenleri (bu satırları da ekleyin)
+    let isReversed = false;
+    let currentSpeedMode = 'normal';
+
+    // Hız değiştir
+    function changeSpeed(speed) {
+      currentSpeedMode = speed;
+
+      // Önceki speed class'ları temizle
+      logo3D.classList.remove('rotation-slow', 'rotation-normal', 'rotation-fast');
+
+      // Yeni speed class'ı ekle
+      logo3D.classList.add(`rotation-${speed}`);
+
+      // Eğer reverse aktifse, onu da ekle
+      if (isReversed) {
+        logo3D.classList.add('rotation-reverse');
+      }
+
+      // Logo'nun animasyonunu güncelle
+      const speedValues = { fast: 8, normal: 20, slow: 35 };
+      currentSpeed = speedValues[speed];
+      logo3D.style.animationDuration = `${currentSpeed}s`;
+
+      // Speed slider'ı güncelle
+      if (speedSlider) {
+        speedSlider.value = speedValues[speed];
+        changeRotationSpeed(speedValues[speed]);
+      }
+    }
+
+    // Yön değiştir
+    function reverseRotation() {
+      isReversed = !isReversed;
+
+      if (isReversed) {
+        logo3D.classList.add('rotation-reverse');
+      } else {
+        logo3D.classList.remove('rotation-reverse');
+      }
+    }
+
+    // Patlama animasyonu
+    function explodeAnimation() {
+      const layers = document.querySelectorAll('.logo-layer');
+
+      // Animasyonu durdur
+      logo3D.style.animation = 'paused';
+
+      // Her katmanı farklı yöne fırlat
+      layers.forEach((layer, index) => {
+        const angle = (index * 72) * (Math.PI / 180);
+        const distance = 200 + (index * 50);
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        const rotation = Math.random() * 720 - 360;
+
+        layer.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+        layer.style.transform = `translateX(${x}px) translateY(${y}px) translateZ(${index * 10}px) rotate(${rotation}deg) scale(0.8)`;
+        layer.style.opacity = '0.3';
+      });
+
+      // 2 saniye sonra geri topla
+      setTimeout(() => {
+        layers.forEach(layer => {
+          layer.style.transition = 'transform 1.5s ease-in-out, opacity 1.5s ease-in-out';
+          layer.style.transform = '';
+          layer.style.opacity = '';
+        });
+
+        // Animasyonu tekrar başlat
+        setTimeout(() => {
+          layers.forEach(layer => {
+            layer.style.transition = '';
+          });
+          logo3D.style.animation = `logoRotate ${currentSpeed || 20}s infinite linear`;
+
+          // Class'ları geri yükle
+          logo3D.classList.add(`rotation-${currentSpeedMode}`);
+          if (isReversed) {
+            logo3D.classList.add('rotation-reverse');
+          }
+        }, 1500);
+      }, 2000);
+    }
+
+    // Logo'yu tamamen sıfırla
+    function resetLogo() {
+      // Tüm class'ları temizle
+      logo3D.className = 'logo-3d';
+
+      // Değişkenleri sıfırla
+      isReversed = false;
+      currentSpeedMode = 'normal';
+      currentSpeed = 20;
+
+      // Speed slider'ı sıfırla
+      const speedValue = document.getElementById('speedValue');
+      const speedSlider = document.getElementById('speedSlider');
+      if (speedSlider) {
+        speedSlider.value = 20;
+      }
+      if (speedValue) {
+        speedValue.textContent = 'Normal';
+      }
+
+      // Transform'u sıfırla
+      logo3D.style.transition = 'transform 1s ease';
+      logo3D.style.transform = 'rotateX(15deg) rotateY(0deg)';
+
+      // Animasyonu başlat
+      setTimeout(() => {
+        logo3D.style.transition = '';
+        logo3D.style.animation = `logoRotate 20s infinite linear`;
+      }, 1000);
+
+      // Tüm katmanları sıfırla
+      document.querySelectorAll('.logo-layer').forEach(layer => {
+        layer.style.transition = '';
+        layer.style.transform = '';
+        layer.style.opacity = '';
+      });
+    }
+
+    // Rastgele spin (bu fonksiyon zaten vardı ama emin olmak için)
+    function randomSpin() {
+      const randomX = Math.random() * 720 - 360;
+      const randomY = Math.random() * 720 - 360;
+      const randomZ = Math.random() * 720 - 360;
+
+      logo3D.style.transition = 'transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      logo3D.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
+
+      setTimeout(() => {
+        logo3D.style.transition = '';
+        logo3D.style.animation = `logoRotate ${currentSpeed || 20}s infinite linear`;
+
+        // Class'ları geri yükle
+        logo3D.classList.add(`rotation-${currentSpeedMode}`);
+        if (isReversed) {
+          logo3D.classList.add('rotation-reverse');
+        }
+      }, 2000);
+    }
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case '1': showPage('home'); break;
+        case '2': showPage('team'); break;
+        case '3': showPage('stadium'); break;
+        case '4': showPage('matches'); break;
+        case '5': showPage('news'); break;
+        case '6': showPage('contact'); break;
+      }
+    });
+
+    // Sayfa yüklendiğinde
+    document.addEventListener('DOMContentLoaded', function () {
+      checkSVGAndSetFallback();
+      // Mevcut DOMContentLoaded fonksiyonunun içine bu satırı ekleyin:
+      createParticles();
+      // Navigation linklerini doğru şekilde ayarla
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const page = link.getAttribute('onclick').match(/'(.+)'/)[1];
+          showPage(page);
+        });
+      });
+
+      console.log('🎉 Tractor FC Website yüklendi!');
+      console.log('⌨️ Klavye kısayolları: 1-6 arası sayılar ile sayfa değiştirebilirsiniz');
+    });
+  </script>
+</body>
+
+</html>
